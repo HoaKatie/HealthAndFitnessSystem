@@ -940,5 +940,4 @@ def main():
         except ValueError:
             print("Error: Please enter an integer from 0 to 10.")
 
-if __name__ == "__main__":
-    main()
+main()
