@@ -6,19 +6,18 @@
 Member
 Trainer
 Administrative Staff
-Personal Training Session
-Group Fitness Class
+Training Session
 Event
-Exercise Routine
-Health Metrics
-Room
-Equipment
+Fitness Goal
 Billing
 Loyalty Program
+Equipment
+Room
+
 
 
 - Relationships:
 
-Members can have personal training sessions, attend classes/events, track routines, and health metrics.
+Members can have personal training sessions, attend classes/events.
 Trainers conduct personal training sessions and track member progress.
 Administrative Staff manages rooms, equipment, schedules, billing, and the loyalty program.

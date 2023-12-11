@@ -32,7 +32,7 @@ CREATE TABLE TrainingSession (
     Notes TEXT
 );
 
--- Event Table
+-- Activity Table
 DROP TABLE IF EXISTS Activity;
 CREATE TABLE Activity (
     ActivityID SERIAL PRIMARY KEY,
