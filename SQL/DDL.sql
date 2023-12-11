@@ -26,8 +26,8 @@ CREATE TABLE AdministrativeStaff (
 DROP TABLE IF EXISTS TrainingSession;
 CREATE TABLE TrainingSession (
     SessionID SERIAL PRIMARY KEY,
-    MemberID INT REFERENCES Member(MemberID),
-    TrainerID INT REFERENCES Trainer(TrainerID),
+    MemberID INT REFERENCES Member(MemberID) ON DELETE CASCADE,
+    TrainerID INT REFERENCES Trainer(TrainerID)ON DELETE CASCADE,
     Date DATE,
     Notes TEXT
 );
@@ -45,7 +45,7 @@ CREATE TABLE Activity (
 DROP TABLE IF EXISTS FitnessGoal;
 CREATE TABLE FitnessGoal (
     GoalID SERIAL PRIMARY KEY,
-    MemberID INT REFERENCES Member(MemberID),
+    MemberID INT REFERENCES Member(MemberID)ON DELETE CASCADE,
     GoalDescription TEXT
 );
 
@@ -53,7 +53,7 @@ CREATE TABLE FitnessGoal (
 DROP TABLE IF EXISTS Billing;
 CREATE TABLE Billing (
     BillID SERIAL PRIMARY KEY,
-    MemberID INT REFERENCES Member(MemberID),
+    MemberID INT REFERENCES Member(MemberID)ON DELETE CASCADE,
     Amount DECIMAL(10, 2),
     Date DATE
 );
@@ -62,7 +62,7 @@ CREATE TABLE Billing (
 DROP TABLE IF EXISTS LoyaltyProgram;
 CREATE TABLE LoyaltyProgram (
     LoyaltyID SERIAL PRIMARY KEY,
-    MemberID INT REFERENCES Member(MemberID),
+    MemberID INT REFERENCES Member(MemberID)ON DELETE CASCADE,
     PointsEarned INT,
     PointsRedeemed INT
 );
@@ -89,26 +89,26 @@ CREATE TABLE Equipment (
 -- Organize Table
 DROP TABLE IF EXISTS Organize;
 CREATE TABLE Organize (
-    StaffID SERIAL REFERENCES Staff(StaffID),
-    ActivityID SERIAL REFERENCES Activity(ActivityID)
+    StaffID SERIAL REFERENCES Staff(StaffID)ON DELETE CASCADE,
+    ActivityID SERIAL REFERENCES Activity(ActivityID)ON DELETE CASCADE
 );
 
 -- Manage Table
 DROP TABLE IF EXISTS Manage;
 CREATE TABLE Manage (
-    StaffID SERIAL REFERENCES Staff(StaffID),
-    MemberID SERIAL REFERENCES Member(MemberID)
+    StaffID SERIAL REFERENCES Staff(StaffID)ON DELETE CASCADE,
+    MemberID SERIAL REFERENCES Member(MemberID)ON DELETE CASCADE
 );
 
 -- SessionTrainer Table
 DROP TABLE IF EXISTS SessionTrainer;
 CREATE TABLE SessionTrainer (
-    TrainerID SERIAL REFERENCES Trainer(Name)
+    TrainerID SERIAL REFERENCES Trainer(Name)ON DELETE CASCADE
 );
 
 -- Schedule Table
 DROP TABLE IF EXISTS Schedule;
 CREATE TABLE Schedule (
-    SessionID SERIAL REFERENCES Session(SessionID),
-    MemberID SERIAL REFERENCES Member(MemberID)
+    SessionID SERIAL REFERENCES Session(SessionID)ON DELETE CASCADE,
+    MemberID SERIAL REFERENCES Member(MemberID)ON DELETE CASCADE
 );
