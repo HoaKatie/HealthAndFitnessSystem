@@ -96,13 +96,13 @@ CREATE TABLE Equipment (
 
 -- Organize Table
 CREATE TABLE Organize (
-    StaffID SERIAL REFERENCES Staff(StaffID)ON DELETE CASCADE,
+    StaffID SERIAL REFERENCES AdministrativeStaff(StaffID)ON DELETE CASCADE,
     ActivityID SERIAL REFERENCES Activity(ActivityID)ON DELETE CASCADE
 );
 
 -- Manage Table
 CREATE TABLE Manage (
-    StaffID SERIAL REFERENCES Staff(StaffID)ON DELETE CASCADE,
+    StaffID SERIAL REFERENCES AdministrativeStaff(StaffID)ON DELETE CASCADE,
     MemberID SERIAL REFERENCES Member(MemberID)ON DELETE CASCADE
 );
 
