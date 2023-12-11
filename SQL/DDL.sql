@@ -1,5 +1,23 @@
--- Member Table
+
+
+DROP TABLE IF EXISTS Equipment;
+DROP TABLE IF EXISTS FitnessGoal;
+
+DROP TABLE IF EXISTS Room;
+DROP TABLE IF EXISTS Organize;
+DROP TABLE IF EXISTS Equipment;
+DROP TABLE IF EXISTS SessionTrainer;
+DROP TABLE IF EXISTS Manage;
+DROP TABLE IF EXISTS Schedule;
+DROP TABLE IF EXISTS Billing;
+DROP TABLE IF EXISTS LoyaltyProgram;
+DROP TABLE IF EXISTS AdministrativeStaff;
+DROP TABLE IF EXISTS TrainingSession;
+DROP TABLE IF EXISTS Activity;
+DROP TABLE IF EXISTS Trainer;
 DROP TABLE IF EXISTS Member;
+
+-- Member Table
 CREATE TABLE Member (
     MemberID SERIAL PRIMARY KEY,
     Name VARCHAR(100) Not null,
@@ -7,7 +25,6 @@ CREATE TABLE Member (
 );
 
 -- Trainer Table
-DROP TABLE IF EXISTS Trainer;
 CREATE TABLE Trainer (
     TrainerID SERIAL PRIMARY KEY,
     Name VARCHAR(100),
@@ -15,7 +32,6 @@ CREATE TABLE Trainer (
 );
 
 -- Administrative Staff Table
-DROP TABLE IF EXISTS AdministrativeStaff;
 CREATE TABLE AdministrativeStaff (
     StaffID SERIAL PRIMARY KEY,
     Name VARCHAR(100),
@@ -23,7 +39,6 @@ CREATE TABLE AdministrativeStaff (
 );
 
 -- Training Session Table
-DROP TABLE IF EXISTS TrainingSession;
 CREATE TABLE TrainingSession (
     SessionID SERIAL PRIMARY KEY,
     MemberID INT REFERENCES Member(MemberID) ON DELETE CASCADE,
@@ -33,7 +48,6 @@ CREATE TABLE TrainingSession (
 );
 
 -- Activity Table
-DROP TABLE IF EXISTS Activity;
 CREATE TABLE Activity (
     ActivityID SERIAL PRIMARY KEY,
     ActivityName VARCHAR(100),
@@ -42,7 +56,6 @@ CREATE TABLE Activity (
 );
 
 -- Fitness Goal Table
-DROP TABLE IF EXISTS FitnessGoal;
 CREATE TABLE FitnessGoal (
     GoalID SERIAL PRIMARY KEY,
     MemberID INT REFERENCES Member(MemberID)ON DELETE CASCADE,
@@ -50,7 +63,6 @@ CREATE TABLE FitnessGoal (
 );
 
 -- Billing Table
-DROP TABLE IF EXISTS Billing;
 CREATE TABLE Billing (
     BillID SERIAL PRIMARY KEY,
     MemberID INT REFERENCES Member(MemberID)ON DELETE CASCADE,
@@ -59,7 +71,6 @@ CREATE TABLE Billing (
 );
 
 -- Loyalty Program Table
-DROP TABLE IF EXISTS LoyaltyProgram;
 CREATE TABLE LoyaltyProgram (
     LoyaltyID SERIAL PRIMARY KEY,
     MemberID INT REFERENCES Member(MemberID)ON DELETE CASCADE,
@@ -69,7 +80,6 @@ CREATE TABLE LoyaltyProgram (
 
 
 -- Room Table
-DROP TABLE IF EXISTS Room;
 CREATE TABLE Room (
     RoomID SERIAL PRIMARY KEY,
     RoomName VARCHAR(100),
@@ -78,36 +88,31 @@ CREATE TABLE Room (
 
 
 -- Equipment Table
-DROP TABLE IF EXISTS Equipment;
 CREATE TABLE Equipment (
     EquipmentID SERIAL PRIMARY KEY,
     EquipmentName VARCHAR(100),
-    RoomID INT REFERENCES Room(RoomID),
+    RoomID INT REFERENCES Room(RoomID)ON DELETE CASCADE,
     MaintenanceStatus BOOLEAN
 );
 
 -- Organize Table
-DROP TABLE IF EXISTS Organize;
 CREATE TABLE Organize (
     StaffID SERIAL REFERENCES Staff(StaffID)ON DELETE CASCADE,
     ActivityID SERIAL REFERENCES Activity(ActivityID)ON DELETE CASCADE
 );
 
 -- Manage Table
-DROP TABLE IF EXISTS Manage;
 CREATE TABLE Manage (
     StaffID SERIAL REFERENCES Staff(StaffID)ON DELETE CASCADE,
     MemberID SERIAL REFERENCES Member(MemberID)ON DELETE CASCADE
 );
 
 -- SessionTrainer Table
-DROP TABLE IF EXISTS SessionTrainer;
 CREATE TABLE SessionTrainer (
     TrainerID SERIAL REFERENCES Trainer(Name)ON DELETE CASCADE
 );
 
 -- Schedule Table
-DROP TABLE IF EXISTS Schedule;
 CREATE TABLE Schedule (
     SessionID SERIAL REFERENCES Session(SessionID)ON DELETE CASCADE,
     MemberID SERIAL REFERENCES Member(MemberID)ON DELETE CASCADE
