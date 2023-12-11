@@ -40,7 +40,7 @@ def addMember(name, contact_info):
         connection = connect()
         if connection:
             cursor = connection.cursor()
-            insert_query = "INSERT INTO Member (Name, ContactInfo) VALUES (%s, %s)"
+            insert_query = "INSERT INTO Member (MemberName, ContactInfo) VALUES (%s, %s)"
             cursor.execute(insert_query, (name, contact_info))
             connection.commit()
             print("Member added successfully")
@@ -113,7 +113,7 @@ def addTrainer(name, specialization):
         connection = connect()
         if connection:
             cursor = connection.cursor()
-            insert_query = "INSERT INTO Trainer (Name, Specialization) VALUES (%s, %s)"
+            insert_query = "INSERT INTO Trainer (TrainerName, Specialization) VALUES (%s, %s)"
             cursor.execute(insert_query, (name, specialization))
             connection.commit()
             print("Trainer added successfully")
@@ -186,7 +186,7 @@ def addAdministrativeStaff(name, role):
         connection = connect()
         if connection:
             cursor = connection.cursor()
-            insert_query = "INSERT INTO AdministrativeStaff (Name, Role) VALUES (%s, %s)"
+            insert_query = "INSERT INTO AdministrativeStaff (StaffName, Role) VALUES (%s, %s)"
             cursor.execute(insert_query, (name, role))
             connection.commit()
             print("Administrative staff added successfully")

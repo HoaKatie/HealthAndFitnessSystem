@@ -19,21 +19,21 @@ DROP TABLE IF EXISTS Member;
 -- Member Table
 CREATE TABLE Member (
     MemberID SERIAL PRIMARY KEY,
-    Name VARCHAR(100) Not null,
+    MemberName VARCHAR(100) Not null,
     ContactInfo VARCHAR(100)
 );
 
 -- Trainer Table
 CREATE TABLE Trainer (
     TrainerID SERIAL PRIMARY KEY,
-    Name VARCHAR(100),
+    TrainerName VARCHAR(100),
     Specialization VARCHAR(100)
 );
 
 -- Administrative Staff Table
 CREATE TABLE AdministrativeStaff (
     StaffID SERIAL PRIMARY KEY,
-    Name VARCHAR(100),
+    StaffName VARCHAR(100),
     Role VARCHAR(100)
 );
 
@@ -106,13 +106,3 @@ CREATE TABLE Manage (
     MemberID SERIAL REFERENCES Member(MemberID)ON DELETE CASCADE
 );
 
--- SessionTrainer Table
-CREATE TABLE SessionTrainer (
-    TrainerID SERIAL REFERENCES Trainer(Name)ON DELETE CASCADE
-);
-
--- Schedule Table
-CREATE TABLE Schedule (
-    SessionID SERIAL REFERENCES Session(SessionID)ON DELETE CASCADE,
-    MemberID SERIAL REFERENCES Member(MemberID)ON DELETE CASCADE
-);

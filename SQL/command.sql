@@ -1,15 +1,15 @@
 -- Inserting a new member
-INSERT INTO Member (Name, ContactInfo) VALUES ('Hoa Nguyen', 'hoa@gmail.com');
-INSERT INTO Member (Name, ContactInfo) VALUES ('Katie Chan', 'katie@gmail.com');
-INSERT INTO Member (Name, ContactInfo) VALUES ('John Cena', '12345678');
-INSERT INTO Member (Name, ContactInfo) VALUES ('Mac Donald', 'donald@hotmail.com');
+INSERT INTO Member (MemberName, ContactInfo) VALUES ('Hoa Nguyen', 'hoa@gmail.com');
+INSERT INTO Member (MemberName, ContactInfo) VALUES ('Katie Chan', 'katie@gmail.com');
+INSERT INTO Member (MemberName, ContactInfo) VALUES ('John Cena', '12345678');
+INSERT INTO Member (MemberName, ContactInfo) VALUES ('Mac Donald', 'donald@hotmail.com');
 
 
 -- Inserting a new trainer
-INSERT INTO Trainer (Name, Specialization) VALUES ('Sarah Smith', 'Yoga');
-INSERT INTO Trainer (Name, Specialization) VALUES ('Julia En', 'Zumba');
-INSERT INTO Trainer (Name, Specialization) VALUES ('Sandy Mai', 'Boxing');
-INSERT INTO Trainer (Name, Specialization) VALUES ('Charlie Puth', 'Muay Thai');
+INSERT INTO Trainer (TrainerName, Specialization) VALUES ('Sarah Smith', 'Yoga');
+INSERT INTO Trainer (TrainerName, Specialization) VALUES ('Julia En', 'Zumba');
+INSERT INTO Trainer (TrainerName, Specialization) VALUES ('Sandy Mai', 'Boxing');
+INSERT INTO Trainer (TrainerName, Specialization) VALUES ('Charlie Puth', 'Muay Thai');
 
 
 -- Inserting a training session
@@ -44,7 +44,7 @@ UPDATE Member SET ContactInfo = 'new@gmail.com' WHERE MemberID = 1;
 UPDATE TrainingSession SET Notes = 'Afternoon session' WHERE SessionID = 1;
 
 -- Listing all members with their fitness goals
-SELECT Member.Name, FitnessGoal.GoalDescription FROM Member LEFT JOIN FitnessGoal ON Member.MemberID = FitnessGoal.MemberID;
+SELECT Member.MemberName, FitnessGoal.GoalDescription FROM Member LEFT JOIN FitnessGoal ON Member.MemberID = FitnessGoal.MemberID;
 
 -- Listing all trainers
 SELECT * FROM Trainer;
