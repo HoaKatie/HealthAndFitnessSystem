@@ -86,3 +86,29 @@ CREATE TABLE Equipment (
     MaintenanceStatus BOOLEAN
 );
 
+-- Organize Table
+DROP TABLE IF EXISTS Organize;
+CREATE TABLE Organize (
+    StaffID SERIAL REFERENCES Staff(StaffID),
+    ActivityID SERIAL REFERENCES Activity(ActivityID)
+);
+
+-- Manage Table
+DROP TABLE IF EXISTS Manage;
+CREATE TABLE Manage (
+    StaffID SERIAL REFERENCES Staff(StaffID),
+    MemberID SERIAL REFERENCES Member(MemberID)
+);
+
+-- SessionTrainer Table
+DROP TABLE IF EXISTS SessionTrainer;
+CREATE TABLE SessionTrainer (
+    TrainerID SERIAL REFERENCES Trainer(Name)
+);
+
+-- Schedule Table
+DROP TABLE IF EXISTS Schedule;
+CREATE TABLE Schedule (
+    SessionID SERIAL REFERENCES Session(SessionID),
+    MemberID SERIAL REFERENCES Member(MemberID)
+);
