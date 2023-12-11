@@ -19,7 +19,7 @@ def add_member():
     contact_info = contact_entry.get()
 
     # Insert new member into the Members table
-    cur.execute("INSERT INTO Member (Name, ContactInfo) VALUES (%s, %s)", (name, contact_info))
+    cur.execute("INSERT INTO Member (MemberName, ContactInfo) VALUES (%s, %s)", (name, contact_info))
     conn.commit()
     result_text.delete(1.0, tk.END)
     result_text.insert(tk.END, "Member added successfully!")
@@ -30,7 +30,7 @@ def display_members():
     rows = cur.fetchall()
     members_info = ""
     for row in rows:
-        members_info += f"MemberID: {row[0]}, Name: {row[1]}, Contact Info: {row[2]}\n"
+        members_info += f"MemberID: {row[0]}, MemberName: {row[1]}, Contact Info: {row[2]}\n"
     result_text.delete(1.0, tk.END)
     result_text.insert(tk.END, members_info)
 
@@ -40,7 +40,7 @@ def add_trainer():
     specialization = trainer_specialization_entry.get()
 
     # Insert new trainer into the Trainer table
-    cur.execute("INSERT INTO Trainer (Name, Specialization) VALUES (%s, %s)", (trainer_name, specialization))
+    cur.execute("INSERT INTO Trainer (TrainerName, Specialization) VALUES (%s, %s)", (trainer_name, specialization))
     conn.commit()
     result_text.delete(1.0, tk.END)
     result_text.insert(tk.END, "Trainer added successfully!")
@@ -51,7 +51,7 @@ def display_trainers():
     rows = cur.fetchall()
     trainers_info = ""
     for row in rows:
-        trainers_info += f"TrainerID: {row[0]}, Name: {row[1]}, Specialization: {row[2]}\n"
+        trainers_info += f"TrainerID: {row[0]}, TrainerName: {row[1]}, Specialization: {row[2]}\n"
     result_text.delete(1.0, tk.END)
     result_text.insert(tk.END, trainers_info)
 
